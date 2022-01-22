@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Inter:wght@400;700&display=swap');
+:root {
+  --scissor-gradient: radial-gradient(
+    circle,
+    #ec9e0e,
+    #eca114,
+    #eca419,
+    #eca61e,
+    #eca922
+  );
+  --paper-gradient: linear-gradient(
+    to bottom,
+    #5671f5,
+    #536ef5,
+    #4f6bf5,
+    #4c68f4,
+    #4865f4
+  );
+  --rock-gradient: linear-gradient(
+    to bottom,
+    #dc2e4e,
+    #dc3352,
+    #dd3756,
+    #dd3c59,
+    #dd405d
+  );
+
+  --dark-txt: hsl(229, 25%, 31%);
+  --score-txt: hsl(229, 64%, 46%);
+  --header-outline: hsl(217, 16%, 45%);
+
+  --bg-gradient: linear-gradient(
+    to bottom,
+    #1f3756,
+    #1b2e4f,
+    #182648,
+    #161d41,
+    #141539
+  );
+
+  --ff: 'Barlow Semi Condensed', sans-serif;
+  --weight-1: 600;
+  --weight-2: 700;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--ff);
+}
+
+body {
+  background-image: var(--bg-gradient);
+  height: 95vh;
+  position: relative;
+}
+
+/*####### HEADER SECTION #######*/
+header {
+  width: 60%;
+  height: 10em;
+  outline: 3px solid var(--header-outline);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 3em auto 5em;
+  padding: 0 1.8em;
+}
+
+.score-wrapper {
+  background-color: white;
+  height: 7em;
+  width: 10em;
+  border-radius: 10px;
+  padding: 0.5em 0;
+  overflow: hidden;
+}
+
+h1 {
+  color: var(--dark-txt);
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+#score {
+  color: var(--score-txt);
+  font-size: 3rem;
+  font-weight: var(--weight-2);
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/*####### MAIN SECTION #######*/
+main {
+  width: 60%;
+  height: 33em;
+  margin: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.triangle {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.options-wrapper {
+  width: 18.8em;
+  height: 17.3em;
+  margin: auto;
+  position: relative;
+}
+
+.option {
+  width: 11em;
+  height: 11em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 5;
+}
+
+.circle {
+  border-radius: 50%;
+  background: #fff;
+  width: 8.5em;
+  height: 8.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 3px solid var(--header-outline);
+}
+
+.circle p {
+  font-size: 3rem;
+}
+
+.paper {
+  top: -5.5em;
+  left: -4em;
+  background-image: var(--paper-gradient);
+}
+
+.scissor {
+  top: -5.5em;
+  right: -4em;
+  background-image: var(--scissor-gradient);
+}
+
+.rock {
+  bottom: -1em;
+  left: 50%;
+  transform: translateX(-50%);
+  background-image: var(--rock-gradient);
+}
+
+.rules-modal {
+  background-color: #fff;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32em;
+  height: 31em;
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  box-shadow: 1px 0px 10px rgb(26, 26, 26);
+  display: none;
+}
+
+.rules-modal p {
+  font-size: 2rem;
+  color: var(--score-txt);
+  font-weight: var(--weight-2);
+  margin-bottom: 0.5em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rules-modal p svg {
+  cursor: pointer;
+}
+
+/*####### FOOTER SECTION #######*/
+footer {
+  position: absolute;
+  bottom: 2em;
+  right: 3em;
+}
+
+.rules {
+  border: none;
+  outline: none;
+  background: transparent;
+  outline: 3px solid var(--header-outline);
+  border-radius: 7px;
+  width: 7em;
+  height: 1.8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--weight-2);
+  color: #fff;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+/* ################ MOBILE ################ */
+@media screen and (max-width: 768px) {
+  body {
+    height: auto;
+  }
+  header {
+    width: 90%;
+    padding: 0 1em;
+    margin: 2em auto 0em;
+  }
+  .score-wrapper {
+    width: 7em;
+  }
+  .option {
+    width: 9em;
+    height: 9em;
+  }
+  .circle {
+    width: 7em;
+    height: 7em;
+  }
+  footer {
+    position: absolute;
+    bottom: 2em;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .rules-modal {
+    width: 130%;
+    height: 22em;
+  }
+}
