@@ -42,6 +42,7 @@
   --weight-1: 600;
   --weight-2: 700;
   --transp-white: rgba(255, 255, 255, 0.6);
+  --transp-blue: rgba(96, 110, 133, 0.9);
   --gray: rgb(80, 80, 80);
 }
 .flex {
@@ -80,26 +81,41 @@ header {
   border-radius: 7px;
 }
 .score__wrapper h1 {
-  color: var(--dark-txt);
+  color: var(--score-txt);
   font-size: 1.2rem;
   letter-spacing: 2px;
 }
 .score__wrapper .score {
   font-size: 2rem;
-  color: var(--score-txt);
+  color: var(--dark-txt);
   font-weight: var(--weight-2);
   text-align: center;
 }
-.filter {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+/* MODAL WITH RULES */
+.popup_rules {
+  background-color: white;
+  position: absolute;
+  z-index: 5;
+  top: 2rem;
+  width: 550px;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+.popup_rules .closing_icon {
+  text-align: end;
+}
+.closing_icon img {
+  cursor: pointer;
 }
 /* MAIN CONTENT */
 main {
   padding-top: 5rem;
   position: relative;
 }
+/* FIRST COMPONENT : CHOICE */
 #triangle_bckg {
   position: absolute;
   top: 10rem;
@@ -120,18 +136,13 @@ main {
 .roles__container .roles:nth-child(3){
   grid-area: 2 / 2 / 3 / 3; 
 }
-
 #paper_outter {
   background-color: #4865f4;
   border-bottom: 7px solid #3549af;
-  position: relative;
-  left: 1.5rem;
 }
 #scissors_outter {
   background-color: #eca922;
   border-bottom: 7px solid #ca880c;
-  position: relative;
-  right: 1.5rem;
 }
 #rock_outter {
   background-color: #dd405d;
@@ -148,6 +159,7 @@ main {
 }
 .outter__circle:hover {
   transform: scale(1.03);
+  box-shadow: 0px 0px 100px var(--transp-blue), 0 0 25px #cad1ee;
 }
 .inner__circle {
   background-color: whitesmoke;
@@ -158,34 +170,33 @@ main {
   min-height: 8rem;
   border-top: 7px solid #dfe5fe;
 }
-.popup_rules {
-  background-color: white;
-  position: absolute;
-  z-index: 5;
-  top: 2rem;
-  width: 500px;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0.5rem;
-}
-.popup_rules .closing_icon {
-  text-align: end;
-}
-.closing_icon img {
-  cursor: pointer;
-}
-
 /* SECOND COMPONENT : BATTLE */
 .battle__wrapper {
+  width: 100%;
+}
+.battle__cards {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 15rem;
+}
+.battle__cards h2 {
+  color: whitesmoke;
+  letter-spacing: 1.5px;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
 }
 .battle__wrapper p strong {
-  font-size: 2.7rem;
+  font-size: 2.5rem;
   color: white;
   font-weight: var(--weight-2);
+}
+.win__btn {
+  margin: 0 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .battle__wrapper button {
   margin-top: 0.7rem;
@@ -194,7 +205,7 @@ main {
   cursor: pointer;
   background-color: white;
   border-radius: 5px;
-  width: 100%;
+  width: 10rem;
   padding: 0.5rem 0;
   color: var(--dark-txt);
   font-weight: var(--weight-2);
@@ -204,7 +215,7 @@ main {
 .battle__wrapper button:hover {
   opacity: 0.8;
 }
-/* FOOTER RULES */
+/* FOOTER */
 footer {
   position: fixed;
   bottom: 3rem;
@@ -214,14 +225,12 @@ footer {
   align-items: center;
   justify-content: flex-end;
 }
-
 footer .rules__wrapper {
    border: 2px solid var(--header-outline);
    padding: 0.3rem 2rem;
    border-radius: 7px;
    transition: 0.3s;
 }
-
 footer .rules {
   border: none;
   outline: none;
@@ -231,7 +240,6 @@ footer .rules {
   letter-spacing: 1.5px;
   cursor: pointer;
 }
-
 footer .rules__wrapper:hover {
   transform: scale(1.03);
   opacity: 0.7;

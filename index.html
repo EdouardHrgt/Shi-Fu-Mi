@@ -37,46 +37,53 @@
           <img src="./misc/svg/image-rules.svg" alt="game rules" />
         </div>
         <!-- COMPONENT 1 -->
-
-
-
-
         <img src="./misc/svg/bg-triangle.svg" alt="triangle" id="triangle_bckg" v-if="round == 1"/>
         
         <div class="roles__container">
+          
           <div class="roles" v-if="round == 1" v-for="(role, i) in roles" :key="i">
-            <div class="outter__circle flex" :id="role.id" @click="pickedRole(role.name)">
+            <div class="outter__circle flex" :id="role.id" @click="pickedRole(role)">
               <div class="inner__circle flex">
-                <img :src="role.image" :alt="role.name" />
+                <img :src="role.image" :alt="role.alt" />
               </div>
             </div>
           </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- END COMPONENT 1 -->
+
         <!-- COMPONENT 2 -->
-        <div class="battle__wrapper" v-if="round == 2">
+        <div class="battle__wrapper flex" v-if="round == 2">
+          <!-- USER CHOICE -->
+          <div class="battle__cards">
+            <h2>YOU PICKED</h2>
+            <div class="roles">
+              <div class="outter__circle flex" :id="userRole.id">
+                <div class="inner__circle flex">
+                  <img :src="userRole.image" :alt="userRole.alt" />
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="win__btn">
             <p><strong>YOU WIN</strong></p>
             <button @click="backToChoice">PLAY AGAIN</button>
           </div>
+
+          <!-- IA CHOICE -->
+          <div class="battle__cards">
+            <h2>THE HOUSE PICKED</h2>
+            <div class="roles">
+              <div class="outter__circle flex" :id="houseRole.id">
+                <div class="inner__circle flex">
+                  <img :src="houseRole.image" :alt="houseRole.alt" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <!-- END COMPONENT 2 -->
       </main>
-
       <footer>
         <div class="rules__wrapper">
           <button class="rules" @click="togglePopup()">RULES</button>
