@@ -18,7 +18,7 @@
         </div>
         <div class="score__wrapper">
           <h1>SCORE</h1>
-          <p class="score">{{score}}</p>
+          <p class="score">{{score || '0'}}</p>
         </div>
       </header>
       <!-- MAIN -->
@@ -37,18 +37,35 @@
           <img src="./misc/svg/image-rules.svg" alt="game rules" />
         </div>
         <!-- COMPONENT 1 -->
-        <img src="./misc/svg/bg-triangle.svg" alt="triangle" id="triangle_bckg" v-if="round == 1"/>
-        
+        <img
+          src="./misc/svg/bg-triangle.svg"
+          alt="triangle"
+          id="triangle_bckg"
+          v-if="round == 1"
+        />
+
         <div class="roles__container">
-          
-          <div class="roles" v-if="round == 1" v-for="(role, i) in roles" :key="i">
-            <div class="outter__circle flex" :id="role.id" @click="pickedRole(role)">
+          <div
+            class="roles"
+            v-if="round == 1"
+            v-for="(role, i) in roles"
+            :key="i"
+          >
+            <div
+              class="outter__circle flex"
+              :id="role.id"
+              @click="battle(role)"
+            >
               <div class="inner__circle flex">
                 <img :src="role.image" :alt="role.alt" />
               </div>
             </div>
+            <div class="hover__circles hover_circle_3">
+              <div class="hover__circles hover_circle_2"></div>
+              <div class="hover__circles hover_circle_1"></div>
+            </div>
           </div>
-      </div>
+        </div>
         <!-- END COMPONENT 1 -->
 
         <!-- COMPONENT 2 -->
@@ -66,7 +83,7 @@
           </div>
 
           <div class="win__btn">
-            <p><strong>YOU WIN</strong></p>
+            <p><strong>{{ btnText }}</strong></p>
             <button @click="backToChoice">PLAY AGAIN</button>
           </div>
 

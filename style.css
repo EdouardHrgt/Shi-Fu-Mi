@@ -43,6 +43,7 @@
   --weight-2: 700;
   --transp-white: rgba(255, 255, 255, 0.6);
   --transp-blue: rgba(96, 110, 133, 0.9);
+  --hover: rgba(96, 110, 133, 0.1);
   --gray: rgb(80, 80, 80);
 }
 .flex {
@@ -61,7 +62,8 @@
   margin: auto;
 }
 body {
-  background-image: var(--bg-gradient);
+  background: rgb(31,55,86);
+  background: radial-gradient(circle, rgba(31,55,86,1) 0%, rgba(24,38,72,1) 60%, rgba(20,21,57,1) 100%);
   height: 100vh;
   padding-top: 3rem;
 }
@@ -127,6 +129,9 @@ main {
   grid-template-rows: repeat(2, 1fr);
   grid-row-gap: 70px;
 }
+.roles {
+  position: relative;
+}
 .roles__container .roles:nth-child(1){
   grid-area: 1 / 1 / 2 / 2; 
 }
@@ -157,9 +162,9 @@ main {
   cursor: pointer;
   transition: 0.3s;
 }
-.outter__circle:hover {
-  transform: scale(1.03);
-  box-shadow: 0px 0px 100px var(--transp-blue), 0 0 25px #cad1ee;
+.outter__circle:hover + .hover__circles,
+.outter__circle:hover + .hover__circles > div {
+ visibility: visible;
 }
 .inner__circle {
   background-color: whitesmoke;
@@ -210,10 +215,36 @@ main {
   color: var(--dark-txt);
   font-weight: var(--weight-2);
   letter-spacing: 1.7px;
-  transition: 0.4s;
+  transition: 0.3s;
 }
 .battle__wrapper button:hover {
-  opacity: 0.8;
+  color: #bb2742;
+}
+.hover__circles {
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+.hover_circle_3 {
+  width: 330px;
+  height: 330px;
+  background-color: var(--hover);
+  z-index: -3;
+}
+.hover_circle_2 {
+  width: 280px;
+  height: 280px;
+  background-color: var(--hover);
+  z-index: -2;
+}
+.hover_circle_1 {
+  width: 230px;
+  height: 230px;
+  background-color: var(--hover);
+  z-index: -1;
 }
 /* FOOTER */
 footer {
