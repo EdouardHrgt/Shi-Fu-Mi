@@ -164,7 +164,7 @@ main {
 }
 .outter__circle:hover + .hover__circles,
 .outter__circle:hover + .hover__circles > div {
- visibility: visible;
+ animation: fadeinout 0.5s ease-in-out forwards;
 }
 .inner__circle {
   background-color: whitesmoke;
@@ -226,7 +226,7 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  visibility: hidden;
+  opacity: 0;
 }
 .hover_circle_3 {
   width: 330px;
@@ -274,4 +274,16 @@ footer .rules {
 footer .rules__wrapper:hover {
   transform: scale(1.03);
   opacity: 0.7;
+}
+
+@keyframes fadeinout {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
