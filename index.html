@@ -22,59 +22,44 @@
         </div>
         <div class="score__wrapper">
           <h1>SCORE</h1>
-          <p class="score">{{score || '0'}}</p>
+          <p class="score">{{score || 0}}</p>
         </div>
       </header>
-      <!-- MAIN -->
 
-      <!-- RULES popup -->
+      <!-- RULES POPUP -->
       <div class="popup_rules" v-if="popup">
         <div class="closing_icon">
-          <img
-            src="./misc/svg/icon-close.svg"
-            alt="close cross"
-            @click="togglePopup()"
-          />
+          <img src="./misc/svg/icon-close.svg" alt="close cross" @click="togglePopup()" />
         </div>
-
         <img src="./misc/svg/image-rules.svg" alt="game rules" class="rules_img"/>
       </div>
-      <main class="flex">
-        <!-- COMPONENT 1 -->
-        <img
-          src="./misc/svg/bg-triangle.svg"
-          alt="triangle"
-          id="triangle_bckg"
-          v-if="round == 1"
-        />
 
-        <div class="roles__container">
-          <div
-            class="roles"
-            v-if="round == 1"
-            v-for="(role, i) in roles"
-            :key="i"
-          >
-            <div
-              class="outter__circle flex"
-              :id="role.id"
-              @click="battle(role)"
-            >
+      <main>
+        <!-- PHASE 1: 'PICKUP' -->
+        <img src="./misc/svg/bg-triangle.svg" alt="triangle" id="triangle_bckg" v-if="pickup" />
+        <div class="roles__container" v-if="pickup">
+
+          <div class="roles" v-for="(role, i) in roles" :key="i" >
+
+            <div class="outter__circle flex" :id="role.id" @click="battle(role)" >
               <div class="inner__circle flex">
                 <img :src="role.image" :alt="role.alt" />
               </div>
             </div>
+
             <div class="hover__circles hover_circle_3">
               <div class="hover__circles hover_circle_2"></div>
               <div class="hover__circles hover_circle_1"></div>
             </div>
-          </div>
-        </div>
-        <!-- END COMPONENT 1 -->
 
-        <!-- COMPONENT 2 -->
-        <div class="battle__wrapper flex" v-if="round == 2">
-          <!-- USER CHOICE -->
+          </div>
+
+        </div>
+        <!-- END PHASE 1 -->
+
+        <!-- PHASE 2: 'BATTLE' -->
+        <div class="battle__wrapper flex" v-if="fight">
+
           <div class="battle__cards">
             <h2>YOU PICKED</h2>
             <div class="roles animate__animated animate__bounceInLeft">
@@ -86,19 +71,14 @@
             </div>
           </div>
 
-          <div
-            class="win__btn animate__animated animate__fadeIn animate__delay-2s"
-          >
+          <div class="win__btn animate__animated animate__fadeIn animate__delay-2s" >
             <p><strong>{{ btnText }}</strong></p>
             <button @click="backToChoice">PLAY AGAIN</button>
           </div>
 
-          <!-- IA CHOICE -->
           <div class="battle__cards">
             <h2>THE HOUSE PICKED</h2>
-            <div
-              class="roles animate__animated animate__bounceInRight animate__delay-1s"
-            >
+            <div class="roles animate__animated animate__bounceInRight animate__delay-1s" >
               <div class="outter__circle flex" :id="houseRole.id">
                 <div class="inner__circle flex">
                   <img :src="houseRole.image" :alt="houseRole.alt" />
@@ -106,14 +86,14 @@
               </div>
             </div>
           </div>
+
         </div>
-        <!-- END COMPONENT 2 -->
+        <!-- END PHASE 2 -->
       </main>
       <footer>
-        <div class="rules__wrapper">
           <button class="rules" @click="togglePopup()">RULES</button>
-        </div>
       </footer>
     </div>
   </body>
+  <!-- MADE By Edouard Herrengt -2022- Challenge from : 'https://www.frontendmentor.io/home' -->
 </html>
