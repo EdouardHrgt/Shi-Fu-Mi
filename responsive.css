@@ -1,0 +1,131 @@
+/* Break points on : 1160px - 768px - 700px - 450px */
+
+@media (max-width: 1160px) {
+    .battle__wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+    .battle__cards:nth-child(1) {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+    .battle__cards:nth-child(3) {
+      grid-area: 1 / 2 / 2 / 3;
+    }
+    .win__btn {
+      grid-area: 2 / 1 / 3 / 3;
+    }
+  }
+@media (max-width: 768px) {
+    main,
+    header {
+      width: 100%;
+    }
+    .popup_rules {
+      inset: 0;
+      transform: none;
+      width: auto;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .popup_rules .closing_icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    .popup_rules .rules_img {
+      width: 380px;
+      height: 380px;
+      object-fit: contain;
+    }
+    #triangle_bckg {
+      width: 400px;
+    }
+    .roles__container {
+      grid-row-gap: 100px;
+    }
+  }
+  
+  @media (max-width: 700px) {
+    #app {
+      width: 100%;
+    }
+    main {
+      padding-top: 0rem;
+      margin-top: 6rem;
+    }
+    #triangle_bckg {
+      position: absolute;
+      top: 4rem;
+      z-index: -1;
+      width: 325px;
+    }
+    .roles__container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 400px;
+      height: 400px;
+      grid-row-gap: 0;
+      width: 95%;
+    }
+    .roles:nth-child(3) {
+      margin: auto;
+    }
+    footer {
+      margin-top: 8rem;
+      text-align: center;
+    }
+    .hover_circle_3 {
+      width: 280px;
+      height: 280px;
+    }
+    .hover_circle_2 {
+      width: 230px;
+      height: 230px;
+    }
+    .hover_circle_1 {
+      width: 180px;
+      height: 180px;
+    }
+  }
+  @media (max-width: 450px) {
+    .outter__circle {
+      height: 9rem;
+      width: 9rem;
+      min-width: 9rem;
+      min-height: 9rem;
+    }
+    .inner__circle {
+      height: 6rem;
+      width: 6rem;
+      min-width: 6rem;
+      min-height: 6rem;
+      border-top: 5px solid #dfe5fe;
+    }
+    #paper_outter {
+      border-bottom: 5px solid #3549af;
+    }
+    #scissors_outter {
+      border-bottom: 5px solid #ca880c;
+    }
+    #rock_outter {
+      border-bottom: 5px solid #bb2742;
+    }
+    .battle__cards h2 {
+      letter-spacing: 1px;
+      font-size: 1rem;
+    }
+    .battle__cards {
+      min-width: 0;
+    }
+    .battle__wrapper {
+      width: 97%;
+    }
+    .battle__wrapper p strong {
+      font-size: 2.3rem;
+    }
+  }
